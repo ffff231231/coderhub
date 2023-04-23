@@ -2,6 +2,6 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
-module.export = {
+module.exports = {
   SERVER_RORT
 } = process.env

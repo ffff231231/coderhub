@@ -1,13 +1,9 @@
 const Koa = require('koa')
-const KoaRouter = require('@koa/router')
+const userRouter = require('./router/user.router')
 const { SERVER_RORT } = require('./config/server')
 
 const app = new Koa()
 
-const userRouter = new KoaRouter({ prefix: '/users' })
-userRouter.get('/list', (ctx, next) => {
-  ctx.body = 'users list'
-})
 app.use(userRouter.routes())
 app.use(userRouter.allowedMethods())
 
