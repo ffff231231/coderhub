@@ -13,8 +13,7 @@ const verifyUser = async (ctx, next) => {
   // 1.2 判断name是否在数据库中已经存在
   const users = await userService.findUserByName(name)
   if (users.length) {
-    ctx.app.emit('error', NAME_IS_ALREADY_EXISTS, ctx)
-    return
+    return ctx.app.emit('error', NAME_IS_ALREADY_EXISTS, ctx)
   }
 
   // 2.执行下一个中间件
