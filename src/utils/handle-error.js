@@ -1,5 +1,5 @@
 const app = require('../app')
-const { NAME_OR_PASSWORD_IS_REQUIRED, NAME_IS_ALREADY_EXISTS, NAME_IS_NOT_EXISTS, PASSWORD_IS_INCORRENT, UNAUTHORIZATION } = require('../config/error')
+const { NAME_OR_PASSWORD_IS_REQUIRED, NAME_IS_ALREADY_EXISTS, NAME_IS_NOT_EXISTS, PASSWORD_IS_INCORRENT, UNAUTHORIZATION, OPERATION_IS_NOT_ALLOWED } = require('../config/error')
 
 app.on('error', (error, ctx) => {
   let code = 0
@@ -25,6 +25,10 @@ app.on('error', (error, ctx) => {
     case UNAUTHORIZATION:
       code = -1005
       message = '无效的token或token已经过期~'
+      break
+    case OPERATION_IS_NOT_ALLOWED:
+      code = -2001
+      message = '没有操作该资源的权限~'
       break
   }
   ctx.body = { code, message }

@@ -3,7 +3,6 @@ const fs = require('fs')
 function registerRouters(app) {
   // 1.读取当前文件夹下的所有文件
   const files = fs.readdirSync(__dirname)
-  console.log(files)
 
   // 2.遍历所有的文件
   for (const file of files) {
